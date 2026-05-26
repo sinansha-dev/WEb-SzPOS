@@ -19,7 +19,7 @@
       <a class="brand" href="#">sz<span>POS</span></a>
       <nav>
         <a href="#pos">POS</a>
-        <a href="#analytics">Analytics</a>
+        <a href="#demo">Live Demo UI</a>
         <a href="#inventory">Inventory</a>
         <a href="#sync">Offline Sync</a>
       </nav>
@@ -33,8 +33,44 @@
       <h1 class="reveal">Everything your store needs in <span>one intelligent POS OS</span>.</h1>
       <p class="lead reveal">From high-speed cart billing to deep analytics, inventory intelligence, RBAC security, and offline resilience — szPOS is engineered for modern retail and restaurants.</p>
       <div class="actions reveal">
-        <a class="btn" href="#contact">Start Free Demo</a>
+        <a class="btn" href="#demo">Try Demo Experience</a>
         <a class="btn btn-outline" href="#features">Explore All Features</a>
+      </div>
+    </section>
+
+    <section id="demo" class="container section">
+      <h2 class="reveal">Interactive Dummy POS Experience</h2>
+      <p class="reveal demo-sub">A UI preview similar to your provided POS screen so visitors can test the feel before booking demo.</p>
+
+      <div class="pos-demo reveal">
+        <article class="demo-panel products-panel">
+          <div class="panel-title"><h3>Products</h3><span>13 Items</span></div>
+          <div class="search">Search product...</div>
+          <div class="chips"><span class="chip active">All</span><span class="chip">Beverages</span><span class="chip">Snacks</span><span class="chip">Bakery</span></div>
+          <div class="product-grid">
+            <div class="p-card"><div class="p-thumb">CC</div><h4>Chocolate Cream</h4><p>₹60</p><small>Stock: 9</small><button>+</button></div>
+            <div class="p-card"><div class="p-thumb">CO</div><h4>Coffee</h4><p>₹30</p><small>Stock: 7</small><button>+</button></div>
+            <div class="p-card selected"><div class="p-thumb">MA</div><h4>Mango Malai</h4><p>₹80</p><small>Stock: 9</small><button>+</button></div>
+            <div class="p-card"><div class="p-thumb">ST</div><h4>Strawberry Juice</h4><p>₹60</p><small>Stock: 9</small><button>+</button></div>
+          </div>
+        </article>
+
+        <article class="demo-panel cart-panel">
+          <h3>Shopping Cart</h3>
+          <div class="empty-cart">🛒<p>Your cart is empty</p><small>Add products from the left to get started</small></div>
+        </article>
+
+        <article class="demo-panel summary-panel">
+          <h3>Order Summary</h3>
+          <div class="line"><span>Subtotal</span><b>₹0.00</b></div>
+          <div class="line"><span>Tax (18.00%)</span><b>₹0.00</b></div>
+          <div class="line total"><span>Total</span><b>₹0.00</b></div>
+          <button class="pay cash">💵 Cash</button>
+          <button class="pay upi">📱 UPI</button>
+          <button class="pay card">💳 Card</button>
+          <div class="mini-row"><span>🔄 Sync</span><span>🟢 Online</span></div>
+          <div class="receipt">🖨 Print Receipt</div>
+        </article>
       </div>
     </section>
 
@@ -44,9 +80,6 @@
         <article id="pos" class="card reveal"><span>01</span><h3>Professional POS & Cart Screen</h3><ul><li>Interactive categorized touch grid + smart SKU/name search.</li><li>Dynamic cart with quantity controls, taxes, discounts, subtotals.</li><li>Multi-payment support: Cash, UPI, and Card.</li><li>Receipt printing flow with spooler + offline sales queue.</li></ul></article>
         <article id="analytics" class="card reveal"><span>02</span><h3>Analytics & Interactive Reports</h3><ul><li>8 KPI executive dashboard (daily/monthly sales, expenses, profit).</li><li>Custom SVG sales trend and profit history charts with indicators.</li><li>Overview, item-wise, expense, and profit analytics tabs.</li><li>Export to CSV and printer-optimized PDF layouts.</li></ul></article>
         <article id="inventory" class="card reveal"><span>03</span><h3>Dynamic Inventory Management</h3><ul><li>Real-time stock tracking with low-stock alert thresholds.</li><li>Full CRUD for products: SKU, price, tax rate, and image metadata.</li><li>Inventory-safe returns and refund-linked stock restoration.</li></ul></article>
-        <article class="card reveal"><span>04</span><h3>Expense Tracking & Profit Logic</h3><ul><li>Detailed expense logging with account, category, and timeline.</li><li>Category intelligence: rent, utilities, salaries, procurement, marketing.</li><li>Auto-balanced net-profit computation against sales performance.</li></ul></article>
-        <article class="card reveal"><span>05</span><h3>Multi-Role User Management (RBAC)</h3><ul><li>Roles: Owner/Admin, Manager, Cashier, Kitchen.</li><li>Screen-level and API-level authorization boundaries.</li><li>Staff active/inactive status toggles for rapid access control.</li></ul></article>
-        <article class="card reveal"><span>06</span><h3>Business Settings Customization</h3><ul><li>Store profile: name, email, phone, and address.</li><li>Finance controls: currency symbol, tax %, and GST details.</li><li>Configuration ready for local compliance and scaling.</li></ul></article>
       </div>
     </section>
 
