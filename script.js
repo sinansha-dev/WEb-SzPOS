@@ -14,11 +14,81 @@ const INITIAL_PRODUCTS = [
   { id: 8, name: "Spiced Paneer Puff", category: "Bakery", price: 45.00, stock: 0, maxStock: 12, code: "PP" } // Out of Stock
 ];
 
-// 2. Core Terminal Application State Management
 const szState = {
   products: [...INITIAL_PRODUCTS],
   cart: [],             // Collection: { productId: Number, qty: Number }
-  sales: [],            // Session completed sales ledger
+  sales: [
+    {
+      id: "INV-82103",
+      timestamp: "2026-05-27, 10:15:30 AM",
+      customerName: "Rahul Sharma",
+      items: [
+        { name: "Chocolate Cream Cake", price: 60.00, qty: 2 },
+        { name: "Espresso Coffee", price: 30.00, qty: 1 }
+      ],
+      subtotal: 150.00,
+      discount: 15.00,
+      tax: 24.30,
+      total: 159.30,
+      method: "UPI"
+    },
+    {
+      id: "INV-12948",
+      timestamp: "2026-05-27, 11:40:15 AM",
+      customerName: "Priya Patel",
+      items: [
+        { name: "Strawberry Juice", price: 60.00, qty: 2 },
+        { name: "Grilled Cheese Sandwich", price: 70.00, qty: 1 }
+      ],
+      subtotal: 190.00,
+      discount: 0.00,
+      tax: 34.20,
+      total: 224.20,
+      method: "CARD"
+    },
+    {
+      id: "INV-40182",
+      timestamp: "2026-05-27, 1:05:45 PM",
+      customerName: "Amit Singh",
+      items: [
+        { name: "Blueberry Glazed Muffin", price: 90.00, qty: 1 },
+        { name: "Premium Masala Chai", price: 20.00, qty: 2 }
+      ],
+      subtotal: 130.00,
+      discount: 26.00,
+      tax: 18.72,
+      total: 122.72,
+      method: "CASH"
+    },
+    {
+      id: "INV-66381",
+      timestamp: "2026-05-27, 2:50:22 PM",
+      customerName: "Neha Gupta",
+      items: [
+        { name: "Chocolate Cream Cake", price: 60.00, qty: 3 },
+        { name: "Mango Malai Shake", price: 80.00, qty: 2 }
+      ],
+      subtotal: 340.00,
+      discount: 0.00,
+      tax: 61.20,
+      total: 401.20,
+      method: "UPI"
+    },
+    {
+      id: "INV-90237",
+      timestamp: "2026-05-27, 4:10:10 PM",
+      customerName: "Walk-in Customer",
+      items: [
+        { name: "Espresso Coffee", price: 30.00, qty: 4 },
+        { name: "Grilled Cheese Sandwich", price: 70.00, qty: 2 }
+      ],
+      subtotal: 260.00,
+      discount: 39.00,
+      tax: 39.78,
+      total: 260.78,
+      method: "CASH"
+    }
+  ],            // Session completed sales ledger
   activeTab: 'pos',     // 'pos' | 'inventory' | 'analytics'
   searchQuery: '',
   activeCategory: 'All',
