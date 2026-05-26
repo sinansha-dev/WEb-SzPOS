@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>szPOS — Futuristic All‑in‑One Retail Operating System</title>
+  <meta name="description" content="Showcase website for szPOS: futuristic POS, analytics, inventory, RBAC, offline sync, audit logs, refunds, and thermal printing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <header class="nav-wrap">
+    <div class="container nav">
+      <a class="brand" href="#">sz<span>POS</span></a>
+      <nav>
+        <a href="#pos">POS</a>
+        <a href="#analytics">Analytics</a>
+        <a href="#inventory">Inventory</a>
+        <a href="#sync">Offline Sync</a>
+      </nav>
+      <a class="btn btn-outline" href="#contact">Book Demo</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <p class="tag reveal">FUTURISTIC COMMERCE PLATFORM</p>
+      <h1 class="reveal">Everything your store needs in <span>one intelligent POS OS</span>.</h1>
+      <p class="lead reveal">From high-speed cart billing to deep analytics, inventory intelligence, RBAC security, and offline resilience — szPOS is engineered for modern retail and restaurants.</p>
+      <div class="actions reveal">
+        <a class="btn" href="#contact">Start Free Demo</a>
+        <a class="btn btn-outline" href="#features">Explore All Features</a>
+      </div>
+    </section>
+
+    <section id="features" class="container section">
+      <h2 class="reveal">Core Product Capabilities</h2>
+      <div class="feature-grid">
+        <article id="pos" class="card reveal"><span>01</span><h3>Professional POS & Cart Screen</h3><ul><li>Interactive categorized touch grid + smart SKU/name search.</li><li>Dynamic cart with quantity controls, taxes, discounts, subtotals.</li><li>Multi-payment support: Cash, UPI, and Card.</li><li>Receipt printing flow with spooler + offline sales queue.</li></ul></article>
+        <article id="analytics" class="card reveal"><span>02</span><h3>Analytics & Interactive Reports</h3><ul><li>8 KPI executive dashboard (daily/monthly sales, expenses, profit).</li><li>Custom SVG sales trend and profit history charts with indicators.</li><li>Overview, item-wise, expense, and profit analytics tabs.</li><li>Export to CSV and printer-optimized PDF layouts.</li></ul></article>
+        <article id="inventory" class="card reveal"><span>03</span><h3>Dynamic Inventory Management</h3><ul><li>Real-time stock tracking with low-stock alert thresholds.</li><li>Full CRUD for products: SKU, price, tax rate, and image metadata.</li><li>Inventory-safe returns and refund-linked stock restoration.</li></ul></article>
+        <article class="card reveal"><span>04</span><h3>Expense Tracking & Profit Logic</h3><ul><li>Detailed expense logging with account, category, and timeline.</li><li>Category intelligence: rent, utilities, salaries, procurement, marketing.</li><li>Auto-balanced net-profit computation against sales performance.</li></ul></article>
+        <article class="card reveal"><span>05</span><h3>Multi-Role User Management (RBAC)</h3><ul><li>Roles: Owner/Admin, Manager, Cashier, Kitchen.</li><li>Screen-level and API-level authorization boundaries.</li><li>Staff active/inactive status toggles for rapid access control.</li></ul></article>
+        <article class="card reveal"><span>06</span><h3>Business Settings Customization</h3><ul><li>Store profile: name, email, phone, and address.</li><li>Finance controls: currency symbol, tax %, and GST details.</li><li>Configuration ready for local compliance and scaling.</li></ul></article>
+      </div>
+    </section>
+
+    <section id="sync" class="container section ai-band reveal">
+      <h2>Offline-first Sync + Core Services</h2>
+      <p>Local queue buffering, connectivity-aware sync flush, audit logging JSON trails, refund lifecycle control, and server-side ESC/POS thermal printer integration.</p>
+    </section>
+
+    <section id="contact" class="container section cta reveal">
+      <h2>Ready to launch szPOS for your business?</h2>
+      <p>Deploy a futuristic, resilient, enterprise-grade POS platform today.</p>
+      <a class="btn" href="mailto:hello@szpos.com">hello@szpos.com</a>
+    </section>
+  </main>
+
+  <footer><div class="container foot">© <span id="year"></span> szPOS • Built for high-performance commerce.</div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
