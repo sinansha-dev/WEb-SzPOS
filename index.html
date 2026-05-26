@@ -7,95 +7,431 @@
   <meta name="description" content="Showcase website for szPOS: futuristic POS, analytics, inventory, RBAC, offline sync, audit logs, refunds, and thermal printing." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Atmospheric background effects -->
   <canvas id="particles" aria-hidden="true"></canvas>
   <div class="grid-overlay" aria-hidden="true"></div>
 
+  <!-- Dynamic Glass Header -->
   <header class="nav-wrap">
     <div class="container nav">
       <a class="brand" href="#">sz<span>POS</span></a>
-      <nav>
-        <a href="#pos">POS</a>
-        <a href="#demo">Live Demo UI</a>
-        <a href="#inventory">Inventory</a>
-        <a href="#sync">Offline Sync</a>
+      <nav class="nav-links">
+        <a href="#demo-section">Interactive App</a>
+        <a href="#features">Core Features</a>
+        <a href="#contact">Book Demo</a>
       </nav>
-      <a class="btn btn-outline" href="#contact">Book Demo</a>
+      <a class="btn btn-outline nav-cta" href="#contact">Get Enterprise Access</a>
     </div>
   </header>
 
   <main>
+    <!-- Premium Hero Section -->
     <section class="hero container">
-      <p class="tag reveal">FUTURISTIC COMMERCE PLATFORM</p>
+      <p class="tag reveal">FUTURISTIC RETAIL ENGINE</p>
       <h1 class="reveal">Everything your store needs in <span>one intelligent POS OS</span>.</h1>
-      <p class="lead reveal">From high-speed cart billing to deep analytics, inventory intelligence, RBAC security, and offline resilience — szPOS is engineered for modern retail and restaurants.</p>
+      <p class="lead reveal">Ditch clunky legacy cash registers. szPOS merges high-speed offline-first billing with real-time inventory synchronization, dynamic audit trails, and automatic analytical insights.</p>
       <div class="actions reveal">
-        <a class="btn" href="#demo">Try Demo Experience</a>
-        <a class="btn btn-outline" href="#features">Explore All Features</a>
+        <a class="btn btn-primary-glow" href="#demo-section">Launch Demo Interface</a>
+        <a class="btn btn-outline" href="#features">Explore Features</a>
       </div>
     </section>
 
-    <section id="demo" class="container section">
-      <h2 class="reveal">Interactive Dummy POS Experience</h2>
-      <p class="reveal demo-sub">A UI preview similar to your provided POS screen so visitors can test the feel before booking demo.</p>
+    <!-- Fully-Featured Live POS Dashboard Section -->
+    <section id="demo-section" class="container section">
+      <div class="section-header reveal">
+        <h2>szPOS Workstation</h2>
+        <p class="section-subtitle">Interact with our fully functional billing environment, stock inventory controller, and live analytical report engines in real time.</p>
+      </div>
 
-      <div class="pos-demo reveal">
-        <article class="demo-panel products-panel">
-          <div class="panel-title"><h3>Products</h3><span>13 Items</span></div>
-          <div class="search">Search product...</div>
-          <div class="chips"><span class="chip active">All</span><span class="chip">Beverages</span><span class="chip">Snacks</span><span class="chip">Bakery</span></div>
-          <div class="product-grid">
-            <div class="p-card"><div class="p-thumb">CC</div><h4>Chocolate Cream</h4><p>₹60</p><small>Stock: 9</small><button>+</button></div>
-            <div class="p-card"><div class="p-thumb">CO</div><h4>Coffee</h4><p>₹30</p><small>Stock: 7</small><button>+</button></div>
-            <div class="p-card selected"><div class="p-thumb">MA</div><h4>Mango Malai</h4><p>₹80</p><small>Stock: 9</small><button>+</button></div>
-            <div class="p-card"><div class="p-thumb">ST</div><h4>Strawberry Juice</h4><p>₹60</p><small>Stock: 9</small><button>+</button></div>
+      <!-- Dashboard Container -->
+      <div class="pos-dashboard reveal">
+        <!-- Dashboard Navigation Tabs -->
+        <div class="dashboard-tabs">
+          <button class="tab-btn active" data-tab="pos">
+            <span class="tab-icon">🛍️</span> POS Terminal
+          </button>
+          <button class="tab-btn" data-tab="inventory">
+            <span class="tab-icon">📦</span> Stock & Inventory
+          </button>
+          <button class="tab-btn" data-tab="analytics">
+            <span class="tab-icon">📊</span> Reports & Insights
+          </button>
+        </div>
+
+        <!-- TAB 1: POS TERMINAL -->
+        <div id="tab-pos" class="tab-content active">
+          <div class="pos-grid">
+            <!-- Catalog Column -->
+            <article class="dashboard-panel products-column">
+              <div class="panel-header">
+                <h3>Product Catalog</h3>
+                <span class="panel-badge" id="catalog-count">0 Items</span>
+              </div>
+              
+              <div class="search-wrap">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="pos-search" class="search-input" placeholder="Search by name or code..." aria-label="Search products" />
+                <button class="search-clear-btn" id="search-clear" aria-label="Clear search">×</button>
+              </div>
+
+              <div class="category-chips" id="category-chips">
+                <!-- Injected dynamically: All, Beverages, Snacks, Bakery -->
+              </div>
+
+              <div class="product-grid" id="pos-product-grid">
+                <!-- Injected dynamically -->
+              </div>
+            </article>
+
+            <!-- Cart Column -->
+            <article class="dashboard-panel cart-column">
+              <div class="panel-header">
+                <h3>Shopping Cart</h3>
+                <span class="panel-badge highlight" id="cart-count">0 items</span>
+              </div>
+
+              <div class="cart-container" id="cart-container">
+                <!-- Injected dynamically. Empty cart placeholder by default: -->
+                <div class="empty-cart">
+                  <div class="empty-icon">🛒</div>
+                  <p>Shopping Cart is Empty</p>
+                  <small>Click on items in the product catalog on the left to start billing.</small>
+                </div>
+              </div>
+            </article>
+
+            <!-- Checkout Details Column -->
+            <article class="dashboard-panel summary-column">
+              <div class="panel-header">
+                <h3>Checkout Details</h3>
+              </div>
+
+              <div class="summary-details">
+                <div class="customer-input-wrap">
+                  <label for="customer-name">Customer Name</label>
+                  <input type="text" id="customer-name" class="customer-input" placeholder="Walk-in Customer" />
+                </div>
+
+                <div class="discount-wrap">
+                  <label for="discount-code">Promo Code</label>
+                  <div class="discount-input-row">
+                    <input type="text" id="discount-code" class="discount-input" placeholder="e.g. WELCOME10" />
+                    <button class="btn-apply" id="apply-promo">Apply</button>
+                  </div>
+                  <div id="promo-status" class="promo-status"></div>
+                </div>
+
+                <div class="billing-breakdown">
+                  <div class="summary-line">
+                    <span>Subtotal</span>
+                    <span id="summary-subtotal">₹0.00</span>
+                  </div>
+                  <div class="summary-line" id="discount-row" style="display: none;">
+                    <span>Discount (<span id="discount-percentage">0</span>%)</span>
+                    <span class="discount-value" id="summary-discount">-₹0.00</span>
+                  </div>
+                  <div class="summary-line">
+                    <span>Tax (GST 18%)</span>
+                    <span id="summary-tax">₹0.00</span>
+                  </div>
+                  <div class="summary-line total-line">
+                    <span>Grand Total</span>
+                    <span id="summary-total">₹0.00</span>
+                  </div>
+                </div>
+
+                <div class="payment-actions">
+                  <button class="pay-btn cash" id="btn-pay-cash">
+                    <span class="pay-icon">💵</span> Cash Payment
+                  </button>
+                  <button class="pay-btn upi" id="btn-pay-upi">
+                    <span class="pay-icon">📱</span> UPI Scan
+                  </button>
+                  <button class="pay-btn card" id="btn-pay-card">
+                    <span class="pay-icon">💳</span> Credit / Debit
+                  </button>
+                </div>
+
+                <div class="device-status-row">
+                  <button class="sync-action-btn" id="btn-manual-sync">
+                    <span id="sync-icon-spin">🔄</span> <span id="sync-btn-text">Sync Spool</span>
+                  </button>
+                  <div class="network-status" id="network-toggle">
+                    <span class="status-indicator online"></span>
+                    <span class="status-label" id="network-status-text">Online Terminal</span>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
-        </article>
+        </div>
 
-        <article class="demo-panel cart-panel">
-          <h3>Shopping Cart</h3>
-          <div class="empty-cart">🛒<p>Your cart is empty</p><small>Add products from the left to get started</small></div>
-        </article>
+        <!-- TAB 2: STOCK & INVENTORY -->
+        <div id="tab-inventory" class="tab-content">
+          <div class="inventory-grid">
+            <!-- Inventory Ledger -->
+            <article class="dashboard-panel inventory-ledger-panel">
+              <div class="panel-header">
+                <h3>Store Inventory Log</h3>
+                <div class="inventory-filters">
+                  <span class="low-stock-warning-badge" id="low-stock-alert-badge" style="display: none;">⚠️ 0 items low on stock</span>
+                </div>
+              </div>
 
-        <article class="demo-panel summary-panel">
-          <h3>Order Summary</h3>
-          <div class="line"><span>Subtotal</span><b>₹0.00</b></div>
-          <div class="line"><span>Tax (18.00%)</span><b>₹0.00</b></div>
-          <div class="line total"><span>Total</span><b>₹0.00</b></div>
-          <button class="pay cash">💵 Cash</button>
-          <button class="pay upi">📱 UPI</button>
-          <button class="pay card">💳 Card</button>
-          <div class="mini-row"><span>🔄 Sync</span><span>🟢 Online</span></div>
-          <div class="receipt">🖨 Print Receipt</div>
-        </article>
+              <div class="table-scroll-container">
+                <table class="inventory-table">
+                  <thead>
+                    <tr>
+                      <th>SKU</th>
+                      <th>Product Name</th>
+                      <th>Category</th>
+                      <th class="text-right">Price</th>
+                      <th>Stock Level Status</th>
+                      <th class="text-center">Restock Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="inventory-table-body">
+                    <!-- Injected dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <!-- Add/Edit Product Panel -->
+            <article class="dashboard-panel inventory-form-panel">
+              <div class="panel-header">
+                <h3>Add New Product</h3>
+              </div>
+              <form id="add-product-form" class="inventory-form">
+                <div class="form-group">
+                  <label for="new-product-name">Product Name *</label>
+                  <input type="text" id="new-product-name" required placeholder="e.g. Fresh Orange Juice" />
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="new-product-category">Category *</label>
+                    <select id="new-product-category" required>
+                      <option value="Beverages">Beverages</option>
+                      <option value="Snacks">Snacks</option>
+                      <option value="Bakery">Bakery</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="new-product-code">SKU Code *</label>
+                    <input type="text" id="new-product-code" required placeholder="e.g. OJ" maxlength="4" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="new-product-price">Price (₹) *</label>
+                    <input type="number" id="new-product-price" required min="1" step="0.01" placeholder="e.g. 90" />
+                  </div>
+                  <div class="form-group">
+                    <label for="new-product-stock">Initial Stock *</label>
+                    <input type="number" id="new-product-stock" required min="0" placeholder="e.g. 15" />
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-submit-product">Add Product to POS</button>
+              </form>
+            </article>
+          </div>
+        </div>
+
+        <!-- TAB 3: REPORTS & LIVE INSIGHTS -->
+        <div id="tab-analytics" class="tab-content">
+          <!-- Live metrics highlights -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-info">
+                <span class="kpi-title">Gross Revenue</span>
+                <h4 class="kpi-value" id="kpi-revenue">₹0.00</h4>
+              </div>
+              <div class="kpi-icon money">💰</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-info">
+                <span class="kpi-title">Orders Completed</span>
+                <h4 class="kpi-value" id="kpi-sales-count">0</h4>
+              </div>
+              <div class="kpi-icon orders">🧾</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-info">
+                <span class="kpi-title">Average Ticket Size</span>
+                <h4 class="kpi-value" id="kpi-aov">₹0.00</h4>
+              </div>
+              <div class="kpi-icon tickets">📈</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-info">
+                <span class="kpi-title">Total Products Sold</span>
+                <h4 class="kpi-value" id="kpi-items-sold">0</h4>
+              </div>
+              <div class="kpi-icon products">🛍️</div>
+            </div>
+          </div>
+
+          <div class="analytics-charts-grid">
+            <!-- SVG Sales Trend Line Chart -->
+            <article class="dashboard-panel chart-panel">
+              <div class="panel-header">
+                <h3>Today's Billing Velocity</h3>
+                <span class="chart-subtitle">Hourly Sales Revenue Trend</span>
+              </div>
+              <div class="chart-wrapper" id="trend-chart-wrapper">
+                <!-- SVG injected dynamically -->
+              </div>
+            </article>
+
+            <!-- SVG Category Donut Chart -->
+            <article class="dashboard-panel chart-panel">
+              <div class="panel-header">
+                <h3>Department Breakdown</h3>
+                <span class="chart-subtitle">Sales Distribution by Category</span>
+              </div>
+              <div class="chart-wrapper" id="donut-chart-wrapper">
+                <!-- SVG injected dynamically -->
+              </div>
+            </article>
+          </div>
+
+          <!-- Transaction Ledger -->
+          <article class="dashboard-panel ledger-panel">
+            <div class="panel-header">
+              <h3>Live Invoice Audit Trail</h3>
+              <span class="panel-badge highlight">Real-time Spooler</span>
+            </div>
+            <div class="table-scroll-container">
+              <table class="ledger-table">
+                <thead>
+                  <tr>
+                    <th>Invoice ID</th>
+                    <th>Timestamp</th>
+                    <th>Customer Name</th>
+                    <th>Items Purchased</th>
+                    <th class="text-right">Amount</th>
+                    <th>Payment</th>
+                    <th class="text-center">Receipt</th>
+                  </tr>
+                </thead>
+                <tbody id="ledger-table-body">
+                  <!-- Injected dynamically -->
+                  <tr id="ledger-empty-state">
+                    <td colspan="7" class="text-center text-muted py-4">
+                      No invoices spooled yet. Perform checkouts in the POS terminal to generate audits.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
+    <!-- Marketing / Capabilities Grid Section -->
     <section id="features" class="container section">
-      <h2 class="reveal">Core Product Capabilities</h2>
+      <div class="section-header reveal">
+        <h2>Built for Industrial Reliability</h2>
+        <p class="section-subtitle">Engineered to keep registers flowing, data secure, and executives informed.</p>
+      </div>
       <div class="feature-grid">
-        <article id="pos" class="card reveal"><span>01</span><h3>Professional POS & Cart Screen</h3><ul><li>Interactive categorized touch grid + smart SKU/name search.</li><li>Dynamic cart with quantity controls, taxes, discounts, subtotals.</li><li>Multi-payment support: Cash, UPI, and Card.</li><li>Receipt printing flow with spooler + offline sales queue.</li></ul></article>
-        <article id="analytics" class="card reveal"><span>02</span><h3>Analytics & Interactive Reports</h3><ul><li>8 KPI executive dashboard (daily/monthly sales, expenses, profit).</li><li>Custom SVG sales trend and profit history charts with indicators.</li><li>Overview, item-wise, expense, and profit analytics tabs.</li><li>Export to CSV and printer-optimized PDF layouts.</li></ul></article>
-        <article id="inventory" class="card reveal"><span>03</span><h3>Dynamic Inventory Management</h3><ul><li>Real-time stock tracking with low-stock alert thresholds.</li><li>Full CRUD for products: SKU, price, tax rate, and image metadata.</li><li>Inventory-safe returns and refund-linked stock restoration.</li></ul></article>
+        <article class="card reveal">
+          <div class="card-icon">⚡</div>
+          <h3>High-Performance Cart Core</h3>
+          <p>Instantaneous barcode scanning, multi-category layout caching, dynamic promotions engine, and immediate stock reservation logic.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon">📶</div>
+          <h3>Offline Resilient Architecture</h3>
+          <p>Built with fully functional service queues that buffer checkout records when internet dropouts occur, auto-flushing when connections restore.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon">🔐</div>
+          <h3>Audit Logging & Security</h3>
+          <p>Automatic immutable system logs for every transaction, granular discount tracking, stock replenishment records, and return validation.</p>
+        </article>
       </div>
     </section>
 
+    <!-- Sync Banner -->
     <section id="sync" class="container section ai-band reveal">
-      <h2>Offline-first Sync + Core Services</h2>
-      <p>Local queue buffering, connectivity-aware sync flush, audit logging JSON trails, refund lifecycle control, and server-side ESC/POS thermal printer integration.</p>
+      <div class="ai-band-inner">
+        <h2>Enterprise-Grade Synchronization</h2>
+        <p>Your sales spools are fully synced with global cloud metrics. Test offline capability by toggling the "Online Terminal" switch inside the workstation panel!</p>
+      </div>
     </section>
 
+    <!-- Book Demo Call To Action -->
     <section id="contact" class="container section cta reveal">
-      <h2>Ready to launch szPOS for your business?</h2>
-      <p>Deploy a futuristic, resilient, enterprise-grade POS platform today.</p>
-      <a class="btn" href="mailto:hello@szpos.com">hello@szpos.com</a>
+      <h2>Transform Your Business Transactions</h2>
+      <p>Configure and scale szPOS across multiple outlets with global inventory routing and custom kitchen displays.</p>
+      <a class="btn btn-primary-glow" href="mailto:sales@szpos.com">Request Enterprise Trial</a>
     </section>
   </main>
 
-  <footer><div class="container foot">© <span id="year"></span> szPOS • Built for high-performance commerce.</div></footer>
+  <footer>
+    <div class="container foot">
+      <p>© <span id="year"></span> szPOS Inc. All rights reserved.</p>
+      <p class="footer-tag">Made for high-performance retail operations.</p>
+    </div>
+  </footer>
+
+  <!-- FLOATING VIRTUAL THERMAL RECEIPT PRINTER MODAL -->
+  <div class="modal-overlay" id="receipt-modal">
+    <div class="receipt-container">
+      <div class="printer-slot" aria-hidden="true"></div>
+      <article class="thermal-receipt" id="receipt-paper">
+        <div class="receipt-header">
+          <h2>szPOS SYSTEM</h2>
+          <p>Connaught Place, New Delhi</p>
+          <p>Ph: +91 98765 43210</p>
+          <p class="receipt-divider">================================</p>
+          <p class="receipt-meta"><strong>INV NO:</strong> <span id="rec-inv-no">INV-10293</span></p>
+          <p class="receipt-meta"><strong>DATE:</strong> <span id="rec-date">2026-05-27 03:45</span></p>
+          <p class="receipt-meta"><strong>CUST:</strong> <span id="rec-customer">Walk-in</span></p>
+          <p class="receipt-divider">================================</p>
+        </div>
+        
+        <!-- Cart products in receipt -->
+        <div class="receipt-items" id="rec-items-list">
+          <!-- Injected dynamically -->
+        </div>
+
+        <div class="receipt-summary">
+          <p class="receipt-divider">--------------------------------</p>
+          <div class="rec-line"><span>Subtotal:</span><span id="rec-subtotal">₹0.00</span></div>
+          <div class="rec-line" id="rec-discount-row"><span>Discount:</span><span id="rec-discount">-₹0.00</span></div>
+          <div class="rec-line"><span>GST (18%):</span><span id="rec-tax">₹0.00</span></div>
+          <div class="rec-line total"><span>GRAND TOTAL:</span><span id="rec-total">₹0.00</span></div>
+          <p class="receipt-divider">================================</p>
+          <div class="rec-line"><span>Paid Via:</span><span id="rec-payment-method">CASH</span></div>
+          <div class="rec-line"><span>Status:</span><span>PAID / SUCCESS</span></div>
+          <p class="receipt-divider">================================</p>
+        </div>
+
+        <div class="receipt-footer">
+          <div class="receipt-barcode" aria-label="Receipt barcode simulation">
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+          <p>Thank You for Shopping!</p>
+          <p>Powering Smarter Retail</p>
+        </div>
+      </article>
+      <div class="receipt-actions">
+        <button class="btn btn-receipt" id="btn-print-receipt">🖨️ Local Print</button>
+        <button class="btn btn-receipt btn-close-receipt" id="btn-close-receipt">Dismiss Slip</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
