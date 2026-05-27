@@ -874,9 +874,9 @@ function renderAnalyticsTab() {
       const row = document.createElement('tr');
       const itemsSummaryText = sale.items.map(i => `${i.name} (${i.qty})`).join(', ');
       
-      let payClass = 'cash';
-      if (sale.method === 'UPI') payClass = 'upi';
-      else if (sale.method === 'CARD') payClass = 'card';
+      let payClass = 'pay-cash';
+      if (sale.method === 'UPI') payClass = 'pay-upi';
+      else if (sale.method === 'CARD') payClass = 'pay-card';
       
       row.innerHTML = `
         <td><span class="invoice-code">${sale.id}</span></td>
@@ -886,7 +886,7 @@ function renderAnalyticsTab() {
           ${itemsSummaryText}
         </td>
         <td class="text-right" style="font-weight:700; color:var(--cyan-glow);">₹${sale.total.toFixed(2)}</td>
-        <td><span class="status-indicator ${payClass}" style="width:6px; height:6px; margin-right:4px;"></span>${sale.method}</td>
+        <td><span class="status-indicator ${payClass}"></span> ${sale.method}</td>
         <td class="text-center">
           <button class="receipt-trigger-btn" data-id="${sale.id}">🖨️</button>
         </td>

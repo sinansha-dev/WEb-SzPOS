@@ -1014,6 +1014,21 @@
     background: var(--danger);
     box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
   }
+
+  .status-indicator.pay-cash {
+    background: var(--success);
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  }
+
+  .status-indicator.pay-upi {
+    background: var(--blue-glow);
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+  }
+
+  .status-indicator.pay-card {
+    background: var(--violet-glow);
+    box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+  }
   
   .status-label {
     font-size: 0.75rem;
